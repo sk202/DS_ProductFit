@@ -40,7 +40,7 @@ def get_confirm_token(response):
 #save_response_content
 #writes file from google drive to file destination
 #input: file response and destination address
-#
+#output: write file to destination 
 def save_response_content(response, destination):
     CHUNK_SIZE = 32768
 
