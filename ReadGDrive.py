@@ -8,24 +8,24 @@
 #https://drive.google.com/a/gsa.gov/file/d/18owini8HeiJGdrBaxwD_NXGcwVusmX-s/view?usp=drivesdk
 
 #Import libraries for uploading
-import requests
+import requests 
 
 #download_file_from_google_drive
 #Saves a file from google drive to a destination
 #Input: two character drives
 #Output: File saved to directory as a zip file
-def download_file_from_google_drive(destination):
-    #URL = "https://docs.google.com/uc?export=download"
-    URL = "https://drive.google.com/a/gsa.gov/file/d/18owini8HeiJGdrBaxwD_NXGcwVusmX-s/view?usp=drivesdk"
+def download_file_from_google_drive(id,destination):
+    URL = "https://docs.google.com/uc?export=download"
+    #URL = "https://drive.google.com/file/d/18owini8HeiJGdrBaxwD_NXGcwVusmX-s"
     session = requests.Session()
 
-    #response = session.get(URL, params = { 'id' : id }, stream = True)
-    response = session.get(URL, stream = True)
+    response = session.get(URL, params = { 'id' : id }, stream = True)
+    #response = session.get(URL, stream = True)
     token = get_confirm_token(response)
 
-    #if token:
-    #    params = { 'id' : id, 'confirm' : token }
-    #    response = session.get(URL, params = params, stream = True)
+    if token:
+        params = { 'id' : id, 'confirm' : token }
+        response = session.get(URL, params = params, stream = True)
 
     save_response_content(response, destination)    
 
@@ -56,10 +56,10 @@ def save_response_content(response, destination):
 #begin main program kick off				
 if __name__ == "__main__":
 	#set file id
-    #file_id = 'TAKE ID FROM SHAREABLE LINK'
+    file_id = '18owini8HeiJGdrBaxwD_NXGcwVusmX'
 	
 	#set or collect destination 
-    destination = 'H:\Git\Raw Data'
+    destination = 'H:/Git/Raw Data/FPDS.zip'
 	
 	#download file from google drive 
-    download_file_from_google_drive(destination)
+    download_file_from_google_drive(file_id,destination)
