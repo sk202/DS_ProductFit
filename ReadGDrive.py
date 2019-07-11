@@ -56,7 +56,8 @@ def save_response_content(response, destination):
 #begin main program kick off				
 if __name__ == "__main__":
 	#set file id
-    file_id = '18owini8HeiJGdrBaxwD_NXGcwVusmX'
+    #file_id = '18owini8HeiJGdrBaxwD_NXGcwVusmX'
+    file_id = '18owini8HeiJGdrBaxwD_NXGcwVusmX-s'
 	
 	#set or collect destination 
     destination = 'H:/Git/Raw Data/FPDS.zip'
